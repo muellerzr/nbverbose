@@ -61,10 +61,6 @@ def addition(
     return a+b
 ```
 
-```python
-display(Markdown('<h4 id="addition" class="doc_header"><code>addition</code><a href="__main__.py#L1" class="source_link" style="float:right">[source]</a></h4>\n\n> <code>addition</code>(**`a`**:`int`, **`b`**:`Union`\\[`int`, `float`\\])\n\nAdds two numbers together\n\n'))
-```
-
 
 <h4 id="addition" class="doc_header"><code>addition</code><a href="__main__.py#L1" class="source_link" style="float:right">[source]</a></h4>
 

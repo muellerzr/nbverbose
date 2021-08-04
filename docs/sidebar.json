@@ -1,7 +1,7 @@
 {
   "nbverbose": {
     "Overview": "/",
-    "Showing Verbose Documentation": "core.html",
+    "Showing Verbose Documentation": "showdoc.html",
     "Command Line Interface": "cli.html"
   }
 }

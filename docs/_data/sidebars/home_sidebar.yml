@@ -11,7 +11,7 @@ entries:
       url: /
     - output: web,pdf
       title: Showing Verbose Documentation
-      url: core.html
+      url: showdoc.html
     - output: web,pdf
       title: Command Line Interface
       url: cli.html
