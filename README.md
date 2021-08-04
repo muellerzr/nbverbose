@@ -41,10 +41,13 @@ When you call the `show_doc` or `doc` functions, wrapping around `addition`, it 
 
 <h4 id="addition" class="doc_header"><code>addition</code><a href="__main__.py#L1" class="source_link" style="float:right">[source]</a></h4>
 
-> <code>addition</code>(**`a`**:`int`, **`b`**:`Union`\[`int`, `float`\])
+> <code>addition</code>(**`a`**:`int`, **`b`**:`(<class 'int'>, <class 'float'>)`)
 
 Adds two numbers together
 
+**Function Arguments**:
+* `a` (`int`): The first number to be added
+* `b` (`int, float`): The second number to be added
 
 
 
