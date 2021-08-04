@@ -2,8 +2,8 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"show_doc": "00_core.ipynb",
-         "doc": "00_core.ipynb",
+index = {"show_doc": "00_showdoc.ipynb",
+         "doc": "00_showdoc.ipynb",
          "execute_nb": "cli.ipynb",
          "convert_nb": "cli.ipynb",
          "notebook2html": "cli.ipynb",
