@@ -30,12 +30,13 @@ def _format_args(
     "Generates a formatted argument string"
     ment_dict = docments(elt, full=True)
     ret = None
+    arg_string = ""
     if "self" in ment_dict.keys(): ment_dict.pop("self")
     if "return" in ment_dict.keys():
         ret = ment_dict["return"]
         ment_dict.pop("return")
     if len(ment_dict.keys()) > 0:
-        arg_string = '**Parameters:**\n\n'
+        arg_string += '**Parameters:**\n\n'
         for key, item in ment_dict.items():
             is_required=False
             if key == 'return': continue
@@ -43,9 +44,11 @@ def _format_args(
                 is_required = True
             arg_string += f"\n - **`{key}`** : *`{item['anno']}`*"
             if is_required: arg_string += ", *optional*"
-            arg_string += f"\n          {item['docment']}\n\n"
+            arg_string += '\n'
+            if item['docment'] is not None:
+                arg_string += f"          {item['docment']}\n"
+            arg_string += '\n'
     if ret is not None:
-        ret = ment_dict["return"]
         if not ret['anno'] == inspect._empty:
             if "**Returns**" not in arg_string:
                 arg_string += "\n\n**Returns**:\n\t"
@@ -55,6 +58,7 @@ def _format_args(
                 if "**Returns**" not in arg_string:
                     arg_string += "\n\n**Returns**:\n\t"
                 arg_string += f"\n          {ret['docment']}\n\n"
+#     return ret
     return arg_string
 
 # Cell
