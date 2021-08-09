@@ -52,7 +52,7 @@ def _format_args(
         if not ret['anno'] == inspect._empty:
             if "**Returns**" not in arg_string:
                 arg_string += "\n\n**Returns**:\n\t"
-            arg_string += f"\n * *`{ment_dict['return']['anno']}`*"
+            arg_string += f"\n * *`{ret['anno']}`*"
         if "docment" in ret.keys():
             if ret['docment'] is not None:
                 if "**Returns**" not in arg_string:
