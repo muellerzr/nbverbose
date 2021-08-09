@@ -17,6 +17,7 @@ import inspect
 from fastcore.foundation import Config
 from fastcore.imports import IN_COLAB
 from fastcore.utils import IN_NOTEBOOK
+from fastcore.docments import docments
 
 if IN_NOTEBOOK:
     from IPython.display import Markdown,display
@@ -24,50 +25,33 @@ if IN_NOTEBOOK:
 
 # Cell
 def _format_args(
-    func:callable # Some callable function or class
-):
-    "Generate a doc string for `func`'s arguments"
-    _pat = r'\((?P<args>.*)\)'
-    try:
-        source = inspect.getsource(func)
-        arg_list = re.findall(_pat, source, flags=re.DOTALL)[0].split('\n')
-        spec = inspect.getfullargspec(func)
-        gt_spec = []
-        for arg in spec.args: gt_spec.append(arg)
-        if spec.varkw is not None: gt_spec.append(f'**{spec.varkw}')
-        argstring = '**Function Arguments**:\n'
-        has_arg = False
-        for arg in arg_list:
-            if len(arg.split('#')) > 1:
-                # Contains argument documentation
-                arg = arg.lstrip()
-                if len(arg.split(':')) > 1:
-                    arg_nm, extra = arg.split(':')
-                    if arg_nm not in gt_spec: continue
-                    else: has_arg = True
-                    typ, arg_str = extra.split('#')
-                    typ = typ.rstrip()
-                    arg_str = arg_str.lstrip()
-                    if '=' in typ: typ = typ.split('=')[0]
-                    if typ.endswith(','): typ = typ[:-1]
-                    typ_str = ''
-                    if not typ[0].isalnum() and not typ[-1].isalnum():
-                        typ = typ[1:-1]
-                    typ_str = typ
-                    argstring += f'* `{arg_nm}` (`{typ_str}`): {arg_str}\n'
-                else:
-                    # We don't have a type declaration
-                    arg_nm, arg_str = arg.split('#')
-                    arg_nm = arg_nm.rstrip()
-                    arg_str = arg_str.lstrip()
-                    if arg_nm.endswith(','): arg_nm = arg_nm[:-1]
-                    if '=' in arg_nm: arg_nm = arg_nm.split('=')[0]
-                    if arg_nm not in gt_spec: continue
-                    else: has_arg = True
-                    argstring += f'* `{arg_nm}`: {arg_str}\n'
-        if has_arg: return argstring
-        else: return ''
-    except: return ''
+    elt, # A function or class
+) -> str: # A formatted docstring for arguments
+    "Generates a formatted argument string"
+    ment_dict = docments(elt, full=True)
+    if "self" in ment_dict.keys(): ment_dict.pop("self")
+    if len(ment_dict.keys()) > 0:
+        arg_string = '**Parameters:**\n\n'
+        for key, item in ment_dict.items():
+            is_required=False
+            if key == 'return': continue
+            if item['default'] != inspect._empty:
+                is_required = True
+            arg_string += f"\n - **`{key}`** : *`{item['anno']}`*"
+            if is_required: arg_string += ", *optional*"
+            arg_string += f"\n\t\t{item['docment']}\n\n"
+    if "return" in ment_dict.keys():
+        ret = ment_dict["return"]
+        if not ret['anno'] == inspect._empty:
+            if "**Returns**" not in arg_string:
+                arg_string += "\n\n**Returns**:\n\t"
+            arg_string += f"\n * *`{ment_dict['return']['anno']}`*"
+        if "docment" in ret.keys():
+            if ret['docment'] is not None:
+                if "**Returns**" not in arg_string:
+                    arg_string += "\n\n**Returns**:\n\t"
+                arg_string += f"\n\t\t{ret['docment']}\n\n"
+    return arg_string
 
 # Cell
 def show_doc(
@@ -77,7 +61,7 @@ def show_doc(
     title_level:int=None, # The heading level
     disp:bool=True, # Whether to display the Markdown
     default_cls_level:int=2 # If elt is a class, a heading level to use for it
-):
+) -> str: # The documentation as a string
     "Show documentation for element `elt` with potential verbose inputs. Supported types: class, function, and enum."
     elt = getattr(elt, '__func__', elt)
     qname = name or qual_name(elt)
@@ -99,7 +83,7 @@ def show_doc(
         # doc links don't work inside markdown pre/code blocks
         s = f'```\n{s}\n```' if monospace else add_doc_links(s, elt)
         doc += s
-    if len(args) > 0: doc += f'\n\n{_format_args(elt)}'
+    if len(args) > 0: doc += f"\n\n{_format_args(elt)}"
     if disp: display(Markdown(doc))
     else: return doc
 

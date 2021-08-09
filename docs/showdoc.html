@@ -61,13 +61,6 @@ nb_path: "00_showdoc.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
 <div class="output_wrapper">
 <div class="output">
 
@@ -75,17 +68,45 @@ nb_path: "00_showdoc.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="show_doc" class="doc_header"><code>show_doc</code><a href="https://github.com/muellerzr/nbverbose/tree/master/nbverbose/showdoc.py#L73" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>show_doc</code>(<strong><code>elt</code></strong>, <strong><code>doc_string</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>name</code></strong>:<code>str</code>=<em><code>None</code></em>, <strong><code>title_level</code></strong>:<code>int</code>=<em><code>None</code></em>, <strong><code>disp</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>default_cls_level</code></strong>:<code>int</code>=<em><code>2</code></em>)</p>
+<h4 id="show_doc" class="doc_header"><code>show_doc</code><a href="https://github.com/muellerzr/nbverbose/tree/master/nbverbose/showdoc.py#L57" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>show_doc</code>(<strong><code>elt</code></strong>, <strong><code>doc_string</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>name</code></strong>:<code>str</code>=<em><code>None</code></em>, <strong><code>title_level</code></strong>:<code>int</code>=<em><code>None</code></em>, <strong><code>disp</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>default_cls_level</code></strong>:<code>int</code>=<em><code>2</code></em>)</p>
 </blockquote>
 <p>Show documentation for element <code>elt</code> with potential verbose inputs. Supported types: class, function, and enum.</p>
-<p><strong>Function Arguments</strong>:</p>
+<p><strong>Parameters:</strong></p>
 <ul>
-<li><code>elt</code>: Some function or class to pull up the documentation for</li>
-<li><code>doc_string</code> (<code>bool</code>): Whether to display the doc string</li>
-<li><code>name</code> (<code>str</code>): An optional name to use instead</li>
-<li><code>title_level</code> (<code>int</code>): The heading level</li>
-<li><code>disp</code> (<code>bool</code>): Whether to display the Markdown</li>
-<li><code>default_cls_level</code> (<code>int</code>): If elt is a class, a heading level to use for it</li>
+<li><strong><code>elt</code></strong> : <em><code>&lt;class 'inspect._empty'&gt;</code></em>
+<pre><code> Some function or class to pull up the documentation for</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>doc_string</code></strong> : <em><code>&lt;class 'bool'&gt;</code></em>, <em>optional</em>
+<pre><code> Whether to display the doc string</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>name</code></strong> : <em><code>&lt;class 'str'&gt;</code></em>, <em>optional</em>
+<pre><code> An optional name to use instead</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>title_level</code></strong> : <em><code>&lt;class 'int'&gt;</code></em>, <em>optional</em>
+<pre><code> The heading level</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>disp</code></strong> : <em><code>&lt;class 'bool'&gt;</code></em>, <em>optional</em>
+<pre><code> Whether to display the Markdown</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>default_cls_level</code></strong> : <em><code>&lt;class 'int'&gt;</code></em>, <em>optional</em>
+<pre><code> If elt is a class, a heading level to use for it</code></pre>
+</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><em><code>&lt;class 'str'&gt;</code></em>
+<pre><code> The documentation as a string</code></pre>
+</li>
 </ul>
 
 </div>
@@ -102,6 +123,13 @@ nb_path: "00_showdoc.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
 <div class="output_wrapper">
 <div class="output">
 
@@ -109,12 +137,14 @@ nb_path: "00_showdoc.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="doc" class="doc_header"><code>doc</code><a href="https://github.com/muellerzr/nbverbose/tree/master/nbverbose/showdoc.py#L107" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>doc</code>(<strong><code>elt</code></strong>)</p>
+<h4 id="doc" class="doc_header"><code>doc</code><a href="https://github.com/muellerzr/nbverbose/tree/master/nbverbose/showdoc.py#L91" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>doc</code>(<strong><code>elt</code></strong>)</p>
 </blockquote>
 <p>Show <a href="/nbverbose/showdoc.html#show_doc"><code>show_doc</code></a> info in preview window when used in a notebook</p>
-<p><strong>Function Arguments</strong>:</p>
+<p><strong>Parameters:</strong></p>
 <ul>
-<li><code>elt</code>: Some function or class to pull up the documentation for</li>
+<li><strong><code>elt</code></strong> : <em><code>&lt;class 'inspect._empty'&gt;</code></em>
+<pre><code> Some function or class to pull up the documentation for</code></pre>
+</li>
 </ul>
 
 </div>

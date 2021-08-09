@@ -15,6 +15,7 @@ from fastcore.parallel import parallel
 from fastcore.script import call_parse, Param, bool_arg
 from fastcore.xtras import Path
 
+from nbdev.imports import get_config
 from nbdev.export import read_nb, nbglob, find_default_export
 from nbdev.export2html import (
     make_sidebar, make_readme,
@@ -30,7 +31,7 @@ def _import_show_doc_cell(mods=None):
     "Add an import show_doc cell."
     source = f"from nbverbose.showdoc import show_doc"
     if mods is not None:
-        for mod in mods: source += f"\nfrom {Config().lib_name}.{mod} import *"
+        for mod in mods: source += f"\nfrom {get_config().lib_name}.{mod} import *"
     return {'cell_type': 'code',
             'execution_count': None,
             'metadata': {'hide_input': True},
@@ -55,11 +56,11 @@ def convert_nb(fname, cls=HTMLExporter, template_file=None, exporter=None, dest=
     fname = Path(fname).absolute()
     nb = read_nb(fname)
     meta_jekyll = get_metadata(nb['cells'])
-    meta_jekyll['nb_path'] = str(fname.relative_to(Config().path("lib_path").parent))
+    meta_jekyll['nb_path'] = str(fname.relative_to(get_config().path("lib_path").parent))
     cls_lvl = find_default_level(nb['cells'])
     mod = find_default_export(nb['cells'])
     nb['cells'] = compose(*process_cells,partial(add_show_docs, cls_lvl=cls_lvl))(nb['cells'])
-    _func = compose(partial(copy_images, fname=fname, dest=Config().path("doc_path")), *process_cell, treat_backticks)
+    _func = compose(partial(copy_images, fname=fname, dest=get_config().path("doc_path")), *process_cell, treat_backticks)
     nb['cells'] = [_func(c) for c in nb['cells']]
     if execute: nb = execute_nb(nb, mod=mod)
     nb['cells'] = [clean_exports(c) for c in nb['cells']]

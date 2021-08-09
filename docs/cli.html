@@ -68,9 +68,30 @@ nb_path: "cli.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="execute_nb" class="doc_header"><code>execute_nb</code><a href="https://github.com/muellerzr/nbdev/tree/master/nbdev/export2html.py#L398" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>execute_nb</code>(<strong><code>nb</code></strong>, <strong><code>mod</code></strong>=<em><code>None</code></em>, <strong><code>metadata</code></strong>=<em><code>None</code></em>, <strong><code>show_doc_only</code></strong>=<em><code>True</code></em>)</p>
+<h4 id="execute_nb" class="doc_header"><code>execute_nb</code><a href="https://github.com/fastai/nbdev/tree/master/nbdev/export2html.py#L398" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>execute_nb</code>(<strong><code>nb</code></strong>, <strong><code>mod</code></strong>=<em><code>None</code></em>, <strong><code>metadata</code></strong>=<em><code>None</code></em>, <strong><code>show_doc_only</code></strong>=<em><code>True</code></em>)</p>
 </blockquote>
 <p>Execute <code>nb</code> (or only the <a href="/nbverbose/showdoc.html#show_doc"><code>show_doc</code></a> cells) with <code>metadata</code></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><strong><code>nb</code></strong> : <em><code>&lt;class 'inspect._empty'&gt;</code></em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>mod</code></strong> : <em><code>&lt;class 'NoneType'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>metadata</code></strong> : <em><code>&lt;class 'NoneType'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>show_doc_only</code></strong> : <em><code>&lt;class 'bool'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
 
 </div>
 
@@ -100,9 +121,40 @@ nb_path: "cli.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="convert_nb" class="doc_header"><code>convert_nb</code><a href="https://github.com/muellerzr/nbverbose/tree/master/nbverbose/cli.py#L53" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>convert_nb</code>(<strong><code>fname</code></strong>, <strong><code>template_file</code></strong>=<em><code>None</code></em>, <strong><code>exporter</code></strong>=<em><code>None</code></em>, <strong><code>dest</code></strong>=<em><code>None</code></em>, <strong><code>execute</code></strong>=<em><code>True</code></em>)</p>
+<h4 id="convert_nb" class="doc_header"><code>convert_nb</code><a href="https://github.com/muellerzr/nbverbose/tree/master/nbverbose/cli.py#L54" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>convert_nb</code>(<strong><code>fname</code></strong>, <strong><code>template_file</code></strong>=<em><code>None</code></em>, <strong><code>exporter</code></strong>=<em><code>None</code></em>, <strong><code>dest</code></strong>=<em><code>None</code></em>, <strong><code>execute</code></strong>=<em><code>True</code></em>)</p>
 </blockquote>
 <p>Convert a notebook <code>fname</code> to html file in <code>dest_path</code>.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><strong><code>fname</code></strong> : <em><code>&lt;class 'inspect._empty'&gt;</code></em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>cls</code></strong> : <em><code>&lt;class 'traitlets.traitlets.MetaHasTraits'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>template_file</code></strong> : <em><code>&lt;class 'NoneType'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>exporter</code></strong> : <em><code>&lt;class 'NoneType'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>dest</code></strong> : <em><code>&lt;class 'NoneType'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>execute</code></strong> : <em><code>&lt;class 'bool'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
 
 </div>
 
@@ -139,9 +191,55 @@ nb_path: "cli.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="notebook2html" class="doc_header"><code>notebook2html</code><a href="https://github.com/muellerzr/nbverbose/tree/master/nbverbose/cli.py#L82" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>notebook2html</code>(<strong><code>fname</code></strong>=<em><code>None</code></em>, <strong><code>force_all</code></strong>=<em><code>False</code></em>, <strong><code>n_workers</code></strong>=<em><code>None</code></em>, <strong><code>template_file</code></strong>=<em><code>None</code></em>, <strong><code>exporter</code></strong>=<em><code>None</code></em>, <strong><code>dest</code></strong>=<em><code>None</code></em>, <strong><code>pause</code></strong>=<em><code>0</code></em>, <strong><code>execute</code></strong>=<em><code>True</code></em>)</p>
+<h4 id="notebook2html" class="doc_header"><code>notebook2html</code><a href="https://github.com/muellerzr/nbverbose/tree/master/nbverbose/cli.py#L83" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>notebook2html</code>(<strong><code>fname</code></strong>=<em><code>None</code></em>, <strong><code>force_all</code></strong>=<em><code>False</code></em>, <strong><code>n_workers</code></strong>=<em><code>None</code></em>, <strong><code>template_file</code></strong>=<em><code>None</code></em>, <strong><code>exporter</code></strong>=<em><code>None</code></em>, <strong><code>dest</code></strong>=<em><code>None</code></em>, <strong><code>pause</code></strong>=<em><code>0</code></em>, <strong><code>execute</code></strong>=<em><code>True</code></em>)</p>
 </blockquote>
 <p>Convert all notebooks matching <code>fname</code> to html files</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><strong><code>fname</code></strong> : <em><code>&lt;class 'NoneType'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>force_all</code></strong> : <em><code>&lt;class 'bool'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>n_workers</code></strong> : <em><code>&lt;class 'NoneType'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>cls</code></strong> : <em><code>&lt;class 'traitlets.traitlets.MetaHasTraits'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>template_file</code></strong> : <em><code>&lt;class 'NoneType'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>exporter</code></strong> : <em><code>&lt;class 'NoneType'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>dest</code></strong> : <em><code>&lt;class 'NoneType'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>pause</code></strong> : <em><code>&lt;class 'int'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>execute</code></strong> : <em><code>&lt;class 'bool'&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
 
 </div>
 
@@ -171,9 +269,35 @@ nb_path: "cli.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="nbdev_build_docs" class="doc_header"><code>nbdev_build_docs</code><a href="https://github.com/muellerzr/nbverbose/tree/master/nbverbose/cli.py#L106" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>nbdev_build_docs</code>(<strong><code>fname</code></strong>:"A notebook name or glob to convert"=<em><code>None</code></em>, <strong><code>force_all</code></strong>:"Rebuild even notebooks that haven't changed"=<em><code>False</code></em>, <strong><code>mk_readme</code></strong>:"Also convert the index notebook to README"=<em><code>True</code></em>, <strong><code>n_workers</code></strong>:"Number of workers to use"=<em><code>None</code></em>, <strong><code>pause</code></strong>:"Pause time (in secs) between notebooks to avoid race conditions"=<em><code>0.5</code></em>)</p>
+<h4 id="nbdev_build_docs" class="doc_header"><code>nbdev_build_docs</code><a href="https://github.com/muellerzr/nbverbose/tree/master/nbverbose/cli.py#L107" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>nbdev_build_docs</code>(<strong><code>fname</code></strong>:"A notebook name or glob to convert"=<em><code>None</code></em>, <strong><code>force_all</code></strong>:"Rebuild even notebooks that haven't changed"=<em><code>False</code></em>, <strong><code>mk_readme</code></strong>:"Also convert the index notebook to README"=<em><code>True</code></em>, <strong><code>n_workers</code></strong>:"Number of workers to use"=<em><code>None</code></em>, <strong><code>pause</code></strong>:"Pause time (in secs) between notebooks to avoid race conditions"=<em><code>0.5</code></em>)</p>
 </blockquote>
 <p>Build the documentation by converting notebooks matching <code>fname</code> to html</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><strong><code>fname</code></strong> : <em><code>str &lt;A notebook name or glob to convert&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>force_all</code></strong> : <em><code>bool_arg &lt;Rebuild even notebooks that haven't changed&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>mk_readme</code></strong> : <em><code>bool_arg &lt;Also convert the index notebook to README&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>n_workers</code></strong> : <em><code>int &lt;Number of workers to use&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong><code>pause</code></strong> : <em><code>float &lt;Pause time (in secs) between notebooks to avoid race conditions&gt;</code></em>, <em>optional</em>
+<pre><code> None</code></pre>
+</li>
+</ul>
 
 </div>
 
