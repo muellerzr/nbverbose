@@ -44,9 +44,8 @@ def _format_args(
                 is_required = True
             arg_string += f"\n - **`{key}`** : *`{item['anno']}`*"
             if is_required: arg_string += ", *optional*"
-            arg_string += '\n'
             if item['docment'] is not None:
-                arg_string += f"          {item['docment']}\n"
+                arg_string += f"\t<p>{item['docment']}</p>\n"
             arg_string += '\n'
     if ret is not None:
         if not ret['anno'] == inspect._empty:
@@ -57,8 +56,7 @@ def _format_args(
             if ret['docment'] is not None:
                 if "**Returns**" not in arg_string:
                     arg_string += "\n\n**Returns**:\n\t"
-                arg_string += f"\n          {ret['docment']}\n\n"
-#     return ret
+                arg_string += f"\t<p>{ret['docment']}</p>\n\n"
     return arg_string
 
 # Cell
