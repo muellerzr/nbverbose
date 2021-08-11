@@ -32,6 +32,7 @@ def _format_args(
     ret = None
     arg_string = ""
     if "self" in ment_dict.keys(): ment_dict.pop("self")
+    if "cls" in ment_dict.keys(): ment_dict.pop("cls")
     if "return" in ment_dict.keys():
         ret = ment_dict["return"]
         ment_dict.pop("return")
@@ -89,7 +90,11 @@ def show_doc(
         # doc links don't work inside markdown pre/code blocks
         s = f'```\n{s}\n```' if monospace else add_doc_links(s, elt)
         doc += s
-    if len(args) > 0: doc += f"\n\n{_format_args(elt)}"
+    if len(args) > 0:
+        try:
+            doc += f"\n\n{_format_args(elt)}"
+        except:
+            pass
     if disp: display(Markdown(doc))
     else: return doc
 
