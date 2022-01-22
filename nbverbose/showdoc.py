@@ -37,28 +37,27 @@ def _format_args(
         ret = ment_dict["return"]
         ment_dict.pop("return")
     if len(ment_dict.keys()) > 0:
-        arg_string += '**Parameters:**\n\n'
+        arg_string += '|**Parameters:**|Type|Default|Details|\n|---|---|---|---|\n'
         for key, item in ment_dict.items():
-            is_required=False
+            is_required=True
             if key == 'return': continue
             if item['default'] != inspect._empty:
-                is_required = True
-            arg_string += f"\n - **`{key}`** : *`{item['anno']}`*"
-            if is_required: arg_string += ", *optional*"
+                is_required = False
+            arg_string += f"|**`{key}`**|"
+            arg_string += "*None Specified*|" if item['anno'] == inspect._empty else f"`{item['anno']}`|"
+            arg_string += "*No Default*|" if is_required else f"`{str(item['default'])}`|"
             if item['docment'] is not None:
-                arg_string += f"\t<p>{item['docment']}</p>\n"
+                arg_string += f"{item['docment']}|"
             arg_string += '\n'
+    return_string = ""
     if ret is not None:
+        return_string += "|**Return Type**|Details|\n|-|-|\n|"
         if not ret['anno'] == inspect._empty:
-            if "**Returns**" not in arg_string:
-                arg_string += "\n\n**Returns**:\n\t"
-            arg_string += f"\n * *`{ret['anno']}`*"
+            return_string += f"`{ret['anno']}`|"
         if "docment" in ret.keys():
             if ret['docment'] is not None:
-                if "**Returns**" not in arg_string:
-                    arg_string += "\n\n**Returns**:\n\t"
-                arg_string += f"\t<p>{ret['docment']}</p>\n\n"
-    return arg_string
+                return_string += f"{ret['docment']}|"
+    return arg_string + "\n" + return_string
 
 # Cell
 def show_doc(
