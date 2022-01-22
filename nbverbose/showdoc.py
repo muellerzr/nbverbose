@@ -116,7 +116,7 @@ def doc(
     if doc_link is not None:
         md += f'\n\n<a href="{doc_link}" target="_blank" rel="noreferrer noopener">Show in docs</a>'
     output = md2html(md)
-    if IN_COLAB: get_ipython().run_cell_magic(u'html', u'', output)
+    if IN_COLAB: get_ipython().run_cell_magic(u'html', u'', output + _TABLE_CSS)
     else:
         try: page.page({'text/html': output + _TABLE_CSS})
         except: display(Markdown(md))
