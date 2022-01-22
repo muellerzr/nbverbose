@@ -20,7 +20,7 @@ from fastcore.utils import IN_NOTEBOOK
 from fastcore.docments import docments
 
 if IN_NOTEBOOK:
-    from IPython.display import HTML,Markdown,display
+    from IPython.display import Markdown,display
     from IPython.core import page
 
 # Cell
@@ -119,4 +119,4 @@ def doc(
     if IN_COLAB: get_ipython().run_cell_magic(u'html', u'', output)
     else:
         try: page.page({'text/html': output + _TABLE_CSS})
-        except: display(HTML(output + _TABLE_CSS))
+        except: display(Markdown(md))
