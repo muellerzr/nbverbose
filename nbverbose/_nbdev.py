@@ -12,7 +12,7 @@ index = {"show_doc": "00_showdoc.ipynb",
 modules = ["showdoc.py",
            "cli.py"]
 
-doc_url = "https://muellerzr.github.io/nbverbose"
+doc_url = "https://muellerzr.github.io/nbverbose/"
 
 git_url = "https://github.com/muellerzr/nbverbose/tree/master/"
 
