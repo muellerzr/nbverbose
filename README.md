@@ -16,7 +16,7 @@ An example of what will happen can be found below
 
 First we import the library:
 
-```python
+```
 from nbverbose.showdoc import *
 ```
 
@@ -24,7 +24,7 @@ Next we'll write a very basic function, that has a new way to document the input
 
 Rather than needing to have a very long doc string, your code can follow this declaration format. Spacing etc is not needed, just each parameter must be on a new line:
 
-```python
+```
 def addition(
     a:int, # The first number to be added
     b:(int, float)=2, # The second number to be added
@@ -56,7 +56,7 @@ Adds two numbers together
 
 We can see that our types are properly formatted. This even works in cases such as `Union` or `List`:
 
-```python
+```
 from typing import Union
 
 def addition(
@@ -86,7 +86,7 @@ Adds two numbers together
 
 Any functions that normally don't follow this format can still work as well:
 
-```python
+```
 def addition(
     a:int,
     b:Union[int, float],
@@ -112,7 +112,7 @@ Adds two numbers together
 |
 
 
-```python
+```
 def addition(a:int,b:Union[int, float]):
     "Adds two numbers together"
     return a+b
