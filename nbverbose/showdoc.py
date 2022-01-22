@@ -20,7 +20,7 @@ from fastcore.utils import IN_NOTEBOOK
 from fastcore.docments import docments
 
 if IN_NOTEBOOK:
-    from IPython.display import Markdown,display
+    from IPython.display import HTML,Markdown,display
     from IPython.core import page
 
 # Cell
@@ -57,7 +57,7 @@ def _format_args(
         if "docment" in ret.keys():
             if ret['docment'] is not None:
                 return_string += f"{ret['docment']}|"
-    return arg_string + "\n" + return_string
+    return arg_string + "\n\n" + return_string
 
 # Cell
 def show_doc(
@@ -98,6 +98,15 @@ def show_doc(
     else: return doc
 
 # Cell
+_TABLE_CSS = """<style>
+    table { border-collapse: collapse; border:thin solid #dddddd; margin: 25px 0px; ; }
+    table tr:first-child { background-color: #FFF}
+    table thead th { background-color: #eee; color: #000; text-align: center;}
+    tr, th, td { border: 1px solid #ccc; border-width: 1px 0 0 1px; border-collapse: collapse;
+    padding: 5px; }
+    tr:nth-child(even) {background: #eee;}</style>"""
+
+# Cell
 def doc(
     elt, # Some function or class to pull up the documentation for
 ):
@@ -109,5 +118,5 @@ def doc(
     output = md2html(md)
     if IN_COLAB: get_ipython().run_cell_magic(u'html', u'', output)
     else:
-        try: page.page({'text/html': output})
-        except: display(Markdown(md))
+        try: page.page({'text/html': output + _TABLE_CSS})
+        except: display(HTML(output + _TABLE_CSS))
