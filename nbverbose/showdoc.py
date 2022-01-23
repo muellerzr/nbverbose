@@ -37,28 +37,27 @@ def _format_args(
         ret = ment_dict["return"]
         ment_dict.pop("return")
     if len(ment_dict.keys()) > 0:
-        arg_string += '**Parameters:**\n\n'
+        arg_string += '|**Parameters:**|Type|Default|Details|\n|---|---|---|---|\n'
         for key, item in ment_dict.items():
-            is_required=False
+            is_required=True
             if key == 'return': continue
             if item['default'] != inspect._empty:
-                is_required = True
-            arg_string += f"\n - **`{key}`** : *`{item['anno']}`*"
-            if is_required: arg_string += ", *optional*"
+                is_required = False
+            arg_string += f"|**`{key}`**|"
+            arg_string += "*None Specified*|" if item['anno'] == inspect._empty else f"`{item['anno']}`|"
+            arg_string += "*No Default*|" if is_required else f"`{str(item['default'])}`|"
             if item['docment'] is not None:
-                arg_string += f"\t<p>{item['docment']}</p>\n"
+                arg_string += f"{item['docment']}|"
             arg_string += '\n'
+    return_string = ""
     if ret is not None:
+        return_string += "|**Return Type**|Details|\n|-|-|\n|"
         if not ret['anno'] == inspect._empty:
-            if "**Returns**" not in arg_string:
-                arg_string += "\n\n**Returns**:\n\t"
-            arg_string += f"\n * *`{ret['anno']}`*"
+            return_string += f"`{ret['anno']}`|"
         if "docment" in ret.keys():
             if ret['docment'] is not None:
-                if "**Returns**" not in arg_string:
-                    arg_string += "\n\n**Returns**:\n\t"
-                arg_string += f"\t<p>{ret['docment']}</p>\n\n"
-    return arg_string
+                return_string += f"{ret['docment']}|"
+    return arg_string + "\n\n" + return_string
 
 # Cell
 def show_doc(
@@ -99,6 +98,15 @@ def show_doc(
     else: return doc
 
 # Cell
+_TABLE_CSS = """<style>
+    table { border-collapse: collapse; border:thin solid #dddddd; margin: 25px 0px; ; }
+    table tr:first-child { background-color: #FFF}
+    table thead th { background-color: #eee; color: #000; text-align: center;}
+    tr, th, td { border: 1px solid #ccc; border-width: 1px 0 0 1px; border-collapse: collapse;
+    padding: 5px; }
+    tr:nth-child(even) {background: #eee;}</style>"""
+
+# Cell
 def doc(
     elt, # Some function or class to pull up the documentation for
 ):
@@ -108,7 +116,7 @@ def doc(
     if doc_link is not None:
         md += f'\n\n<a href="{doc_link}" target="_blank" rel="noreferrer noopener">Show in docs</a>'
     output = md2html(md)
-    if IN_COLAB: get_ipython().run_cell_magic(u'html', u'', output)
+    if IN_COLAB: get_ipython().run_cell_magic(u'html', u'', output + _TABLE_CSS)
     else:
-        try: page.page({'text/html': output})
+        try: page.page({'text/html': output + _TABLE_CSS})
         except: display(Markdown(md))
